@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+import Error from './Error';
 
 const Pregunta = () => {
 
@@ -18,7 +19,6 @@ const Pregunta = () => {
         e.preventDefault();
 
         //Validar
-        console.log(presupuesto);
         if (presupuesto < 1 || isNaN(presupuesto)) {
             setError(true);
             return;     //cortar la ejecucion.
@@ -31,8 +31,8 @@ const Pregunta = () => {
 
     return (
         <Fragment>
-
             <h2>Coloca tu Presupuesto</h2>
+            {error ? <Error mensaje="El Presupuesto es Incorrecto" /> : null}
             <form
                 onSubmit={handleSubmit}
             >
