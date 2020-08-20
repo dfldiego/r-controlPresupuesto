@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Pregunta from './components/Pregunta';
 
 function App() {
   return (
@@ -6,6 +7,9 @@ function App() {
       <div className="container">
         <header>
           <h1>Gasto Semanal</h1>
+          <div className="contenido contenido-principal">
+            <Pregunta />
+          </div>
         </header>
       </div>
     </Fragment>
