@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Pregunta from './components/Pregunta';
+import Formulario from './components/Formulario';
 
 function App() {
 
@@ -17,6 +18,12 @@ function App() {
               setCuenta={setCuenta}
               setRestante={setRestante}
             />
+            <div class="row">
+              <div class="one-half column">
+                <Formulario />
+              </div>
+              <div class="one-half column">2</div>
+            </div>
           </div>
         </header>
       </div>
