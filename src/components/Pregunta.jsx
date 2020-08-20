@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import Error from './Error';
 
-const Pregunta = ({ setCuenta, setRestante }) => {
+const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
 
     // State de Presupuesto
     const [presupuesto, setPresupuesto] = useState(0);
@@ -28,6 +28,7 @@ const Pregunta = ({ setCuenta, setRestante }) => {
         setError(false);
         setCuenta(presupuesto);
         setRestante(presupuesto);
+        setAgregarpregunta(false);
     }
 
     return (

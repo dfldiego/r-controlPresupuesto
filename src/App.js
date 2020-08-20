@@ -7,6 +7,7 @@ function App() {
   //Definir State 
   const [cuenta, setCuenta] = useState(0);
   const [restante, setRestante] = useState(0);
+  const [agregarpregunta, setAgregarpregunta] = useState(true);
 
   return (
     <Fragment>
@@ -14,16 +15,20 @@ function App() {
         <header>
           <h1>Gasto Semanal</h1>
           <div className="contenido contenido-principal">
-            <Pregunta
-              setCuenta={setCuenta}
-              setRestante={setRestante}
-            />
-            <div class="row">
-              <div class="one-half column">
-                <Formulario />
+            {agregarpregunta ?
+              <Pregunta
+                setCuenta={setCuenta}
+                setRestante={setRestante}
+                setAgregarpregunta={setAgregarpregunta}
+              />
+              :
+              <div class="row">
+                <div class="one-half column">
+                  <Formulario />
+                </div>
+                <div class="one-half column">2</div>
               </div>
-              <div class="one-half column">2</div>
-            </div>
+            }
           </div>
         </header>
       </div>
