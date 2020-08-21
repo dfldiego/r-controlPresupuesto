@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { revisarPresupuesto } from '../helpers';
 
 const ControlPresupuesto = ({ cuenta, restante }) => {
     return (
@@ -6,7 +7,7 @@ const ControlPresupuesto = ({ cuenta, restante }) => {
             <div className="alert alert-primary">
                 Presupuesto: $ {cuenta}
             </div>
-            <div className="alert">
+            <div className={revisarPresupuesto(cuenta, restante)}>
                 Restante: $ {restante}
             </div>
         </Fragment>

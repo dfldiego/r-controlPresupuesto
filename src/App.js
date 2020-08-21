@@ -29,11 +29,7 @@ function App() {
     }
 
 
-  }, [gasto])
-
-  const setNuevoGasto = gasto => {
-
-  }
+  }, [gasto, creargasto, gastos, restante])
 
   return (
     <Fragment>
