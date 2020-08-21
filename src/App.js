@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Pregunta from './components/Pregunta';
 import Formulario from './components/Formulario';
+import ListadoGastos from './components/ListadoGastos';
 
 function App() {
 
@@ -33,7 +34,11 @@ function App() {
                     setNuevoGasto={setNuevoGasto}
                   />
                 </div>
-                <div className="one-half column">2</div>
+                <div className="one-half column">
+                  <ListadoGastos
+                    gastos={gastos}
+                  />
+                </div>
               </div>
             }
           </div>
