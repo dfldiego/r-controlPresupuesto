@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 const Gasto = ({ gasto }) => (
     <Fragment>
@@ -10,5 +11,9 @@ const Gasto = ({ gasto }) => (
         </li>
     </Fragment>
 );
+
+Gasto.propTypes = {
+    gasto: PropTypes.object.isRequired
+}
 
 export default Gasto;
