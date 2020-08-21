@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import Error from './Error';
 import shortid from 'shortid';
 
-const Formulario = () => {
+const Formulario = ({ setNuevoGasto }) => {
 
     //Creo los states
     const [nombre, setNombre] = useState('');
@@ -26,11 +26,14 @@ const Formulario = () => {
             cantidad: cantidad,
             id: shortid.generate()
         }
-        console.log(gasto);
+        //console.log(gasto);
 
         //Pasar el gasto al componente principal
+        setNuevoGasto(gasto);
 
         //resetear el form
+        setNombre("");
+        setCantidad(0);
 
     }
 
@@ -47,6 +50,7 @@ const Formulario = () => {
                     name="nombreGasto"
                     placeholder="Ej. Transporte"
                     className="u-full-width"
+                    value={nombre}
                     onChange={e => setNombre(e.target.value)}
                 />
                 <label>Cantidad Gasto:</label>
@@ -55,6 +59,7 @@ const Formulario = () => {
                     name="cantidadGasto"
                     placeholder="Ej. 300"
                     className="u-full-width"
+                    value={cantidad}
                     onChange={e => setCantidad(parseInt(e.target.value, 10))}
                 />
                 <input

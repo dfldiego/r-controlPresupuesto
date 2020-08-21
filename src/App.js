@@ -8,6 +8,11 @@ function App() {
   const [cuenta, setCuenta] = useState(0);
   const [restante, setRestante] = useState(0);
   const [agregarpregunta, setAgregarpregunta] = useState(true);
+  const [gastos, setGastos] = useState([]);
+
+  const setNuevoGasto = gasto => {
+    setGastos([...gastos, gasto])
+  }
 
   return (
     <Fragment>
@@ -24,7 +29,9 @@ function App() {
               :
               <div className="row">
                 <div className="one-half column">
-                  <Formulario />
+                  <Formulario
+                    setNuevoGasto={setNuevoGasto}
+                  />
                 </div>
                 <div className="one-half column">2</div>
               </div>
