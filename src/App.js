@@ -22,11 +22,11 @@ function App() {
                 setAgregarpregunta={setAgregarpregunta}
               />
               :
-              <div class="row">
-                <div class="one-half column">
+              <div className="row">
+                <div className="one-half column">
                   <Formulario />
                 </div>
-                <div class="one-half column">2</div>
+                <div className="one-half column">2</div>
               </div>
             }
           </div>
