@@ -20,12 +20,14 @@ function App() {
   const [gasto, setGasto] = useState({});
   const [creargasto, setCreargasto] = useState(false);
 
+  //LocalStorage
   useEffect(() => {
     if (gastosIniciales) {
       localStorage.setItem('citas', JSON.stringify(gastos));
     } else {
       localStorage.setItem('citas', JSON.stringify([]));
     }
+    console.log(gastosIniciales.length);
   }, [gastosIniciales, gastos])
 
   // UseEffect que actualiza el restante(cada vez que ingresamos un gasto)
@@ -51,7 +53,7 @@ function App() {
         <header>
           <h1>Gasto Mensual</h1>
           <div className="contenido contenido-principal">
-            {agregarpregunta ?
+            {agregarpregunta && gastosIniciales.length === 0 ?
               <Pregunta
                 setCuenta={setCuenta}
                 setRestante={setRestante}
