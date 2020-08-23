@@ -79,6 +79,7 @@ function App() {
               <div className="row">
                 <div className="one-half column">
                   <Formulario
+                    restante={restante}
                     setGasto={setGasto}
                     setCreargasto={setCreargasto}
                     setAgregarpregunta={setAgregarpregunta}

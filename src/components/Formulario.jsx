@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Error from './Error';
 import shortid from 'shortid';
 
-const Formulario = ({ setGasto, setCreargasto, setAgregarpregunta }) => {
+const Formulario = ({ restante, setGasto, setCreargasto, setAgregarpregunta }) => {
 
     //Creo los states
     const [nombre, setNombre] = useState('');
@@ -15,7 +15,7 @@ const Formulario = ({ setGasto, setCreargasto, setAgregarpregunta }) => {
         e.preventDefault();
 
         // Validar
-        if (cantidad < 1 || isNaN(cantidad) || nombre.trim() === '') {
+        if (cantidad < 1 || isNaN(cantidad) || nombre.trim() === '' || cantidad > restante) {
             setError(true);
             return;
         }
