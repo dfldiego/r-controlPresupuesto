@@ -4,6 +4,7 @@ import { revisarPresupuesto } from '../helpers';
 
 
 const ControlPresupuesto = ({ cuenta, restante }) => {
+
     return (
         <Fragment>
             <div className="alert alert-primary">

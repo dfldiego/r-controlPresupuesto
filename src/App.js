@@ -6,29 +6,40 @@ import ControlPresupuesto from './components/ControlPresupuesto';
 
 function App() {
 
-  // Gastos en Local Storage
-  let gastosIniciales = JSON.parse(localStorage.getItem('citas'));
+  // Local Storage para los gastos
+  let gastosIniciales = JSON.parse(localStorage.getItem('gastoInicial'));
   if (!gastosIniciales) {
     gastosIniciales = [];
   }
 
+  // Cuenta-PresupuestoInicial
+  let cantidadPresupuesto = JSON.parse(localStorage.getItem('presupuestoInicial'));
+  if (!cantidadPresupuesto) {
+    cantidadPresupuesto = 0;
+  }
+  // restante
+  let restanteInicial = JSON.parse(localStorage.getItem('restanteInicial'));
+  if (!restanteInicial) {
+    restanteInicial = 0;
+  }
+
   //Definir State 
-  const [cuenta, setCuenta] = useState(0);
-  const [restante, setRestante] = useState(0);
+  const [cuenta, setCuenta] = useState(parseInt(cantidadPresupuesto));
+  const [restante, setRestante] = useState(restanteInicial);
   const [agregarpregunta, setAgregarpregunta] = useState(true);
   const [gastos, setGastos] = useState(gastosIniciales);
   const [gasto, setGasto] = useState({});
   const [creargasto, setCreargasto] = useState(false);
 
-  //LocalStorage
+  //useEffect para LocalStorage de Gastos.
   useEffect(() => {
     if (gastosIniciales) {
-      localStorage.setItem('citas', JSON.stringify(gastos));
+      localStorage.setItem('gastoInicial', JSON.stringify(gastos));
     } else {
-      localStorage.setItem('citas', JSON.stringify([]));
+      localStorage.setItem('gastoInicial', JSON.stringify([]));
     }
     console.log(gastosIniciales.length);
-  }, [gastosIniciales, gastos])
+  }, [gastos, gastosIniciales])
 
   // UseEffect que actualiza el restante(cada vez que ingresamos un gasto)
   useEffect(() => {
@@ -39,7 +50,7 @@ function App() {
       //resta del presupuesto actual
       const presupuestoRestante = restante - gasto.cantidad;
       setRestante(presupuestoRestante);
-
+      localStorage.setItem('restanteInicial', JSON.stringify(presupuestoRestante));
       //Resetear el creargasto
       setCreargasto(false);
     }
@@ -53,7 +64,7 @@ function App() {
         <header>
           <h1>Gasto Mensual</h1>
           <div className="contenido contenido-principal">
-            {agregarpregunta && gastosIniciales.length === 0 ?
+            {agregarpregunta && cuenta === 0 ?
               <Pregunta
                 setCuenta={setCuenta}
                 setRestante={setRestante}

@@ -6,18 +6,19 @@ const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
 
     // State de Presupuesto
     const [presupuesto, setPresupuesto] = useState(0);
-
     // State de error
     const [error, setError] = useState(false);
 
     // Funcion que lee el presupuesto. 10 -> en base 10
     const handleChange = e => {
-        setPresupuesto(parseInt(e.target.value, 10));
+        setPresupuesto(parseInt(e.target.value), 10);
     }
 
     // Funcion submit para definir el presupuesto
     const handleSubmit = e => {
         e.preventDefault();
+        debugger;
+        //console.log(presupuesto);
 
         //Validar
         if (presupuesto < 1 || isNaN(presupuesto)) {
@@ -30,6 +31,8 @@ const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
         setCuenta(presupuesto);
         setRestante(presupuesto);
         setAgregarpregunta(false);
+        localStorage.setItem('presupuestoInicial', JSON.stringify(presupuesto));
+        localStorage.setItem('restanteInicial', JSON.stringify(presupuesto));
     }
 
     return (
