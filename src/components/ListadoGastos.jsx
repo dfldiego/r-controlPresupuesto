@@ -2,18 +2,24 @@ import React, { Fragment } from 'react'
 import Gasto from './Gasto';
 import PropTypes from 'prop-types';
 
-const ListadoGastos = ({ gastos }) => (
+const ListadoGastos = ({ gastos, setGastos, setRestante, restante }) => (
     <Fragment>
         <div className="gastos-realizados">
             <h2>Listado</h2>
-            {gastos.map(gasto => (
-                <Gasto
-                    key={gasto.id}
-                    gasto={gasto}
-                />
-            ))}
+            <table className="u-full-width">
+                {gastos.map(gasto => (
+                    <Gasto
+                        key={gasto.id}
+                        gasto={gasto}
+                        gastos={gastos}
+                        setGastos={setGastos}
+                        restante={restante}
+                        setRestante={setRestante}
+                    />
+                ))}
+            </table>
         </div>
-    </Fragment>
+    </Fragment >
 );
 
 ListadoGastos.propTypes = {

@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import Error from './Error';
 
 const Pregunta = ({ setCuenta, cuenta, gastos, restante, setRestante, setAgregarpregunta }) => {
-
     // State de Presupuesto
     const [presupuesto, setPresupuesto] = useState(cuenta);
     // State de error
     const [error, setError] = useState(false);
-
 
     //useEffect para restante
     useEffect(() => {

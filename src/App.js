@@ -5,7 +5,6 @@ import ListadoGastos from './components/ListadoGastos';
 import ControlPresupuesto from './components/ControlPresupuesto';
 
 function App() {
-
   // Local Storage para los gastos
   let gastosIniciales = JSON.parse(localStorage.getItem('gastoInicial'));
   if (!gastosIniciales) {
@@ -30,6 +29,11 @@ function App() {
   const [gastos, setGastos] = useState(gastosIniciales);
   const [gasto, setGasto] = useState({});
   const [creargasto, setCreargasto] = useState(false);
+
+  //useEffect para LocalStorage de Restante
+  useEffect(() => {
+    localStorage.setItem('restanteInicial', JSON.stringify(restante));
+  }, [restante])
 
   //useEffect para LocalStorage de Gastos.
   useEffect(() => {
@@ -83,6 +87,9 @@ function App() {
                 <div className="one-half column">
                   <ListadoGastos
                     gastos={gastos}
+                    setGastos={setGastos}
+                    setRestante={setRestante}
+                    restante={restante}
                   />
                   <ControlPresupuesto
                     cuenta={cuenta}
