@@ -23,7 +23,9 @@ const ListadoGastos = ({ gastos, setGastos, setRestante, restante }) => (
 );
 
 ListadoGastos.propTypes = {
-    gastos: PropTypes.array.isRequired
+    gastos: PropTypes.array.isRequired,
+    setGastos: PropTypes.func.isRequired,
+    setRestante: PropTypes.func.isRequired,
+    restante: PropTypes.number.isRequired
 }
-
 export default ListadoGastos;

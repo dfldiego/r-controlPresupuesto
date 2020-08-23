@@ -76,8 +76,10 @@ const Pregunta = ({ setCuenta, cuenta, gastos, restante, setRestante, setAgregar
 
 Pregunta.propTypes = {
     setCuenta: PropTypes.func.isRequired,
+    cuenta: PropTypes.number.isRequired,
+    gastos: PropTypes.array.isRequired,
+    restante: PropTypes.number.isRequired,
     setRestante: PropTypes.func.isRequired,
     setAgregarpregunta: PropTypes.func.isRequired
 }
-
 export default Pregunta;

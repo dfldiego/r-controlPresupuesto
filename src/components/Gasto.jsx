@@ -36,7 +36,10 @@ const Gasto = ({ gasto, gastos, setGastos, restante, setRestante }) => {
 };
 
 Gasto.propTypes = {
-    gasto: PropTypes.object.isRequired
+    gasto: PropTypes.object.isRequired,
+    gastos: PropTypes.array.isRequired,
+    setGastos: PropTypes.func.isRequired,
+    restante: PropTypes.number.isRequired,
+    setRestante: PropTypes.func.isRequired
 }
-
 export default Gasto;

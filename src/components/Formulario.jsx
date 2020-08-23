@@ -85,8 +85,9 @@ const Formulario = ({ restante, setGasto, setCreargasto, setAgregarpregunta }) =
 }
 
 Formulario.propTypes = {
+    restante: PropTypes.number.isRequired,
     setGasto: PropTypes.func.isRequired,
     setCreargasto: PropTypes.func.isRequired,
+    setAgregarpregunta: PropTypes.func.isRequired
 }
-
 export default Formulario;
