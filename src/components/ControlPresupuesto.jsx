@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { revisarPresupuesto } from '../helpers';
 
-
 const ControlPresupuesto = ({ cuenta, restante }) => {
 
     return (

@@ -1,13 +1,28 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Error from './Error';
 
-const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
+const Pregunta = ({ setCuenta, cuenta, gastos, restante, setRestante, setAgregarpregunta }) => {
 
     // State de Presupuesto
-    const [presupuesto, setPresupuesto] = useState(0);
+    const [presupuesto, setPresupuesto] = useState(cuenta);
     // State de error
     const [error, setError] = useState(false);
+
+
+    //useEffect para restante
+    useEffect(() => {
+        let valorRestanteInicial = presupuesto;
+        // restante es igual presupuesto - cantidad de gastos
+        if (gastos.length === 0) {  //si no hay gastos -> restante = presupuesto
+            setRestante(presupuesto);
+        } else {
+            gastos.forEach(gasto => {
+                valorRestanteInicial = valorRestanteInicial - gasto.cantidad;
+                setRestante(valorRestanteInicial);
+            });
+        }
+    }, [setRestante, presupuesto, gastos])
 
     // Funcion que lee el presupuesto. 10 -> en base 10
     const handleChange = e => {
@@ -17,8 +32,6 @@ const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
     // Funcion submit para definir el presupuesto
     const handleSubmit = e => {
         e.preventDefault();
-        debugger;
-        //console.log(presupuesto);
 
         //Validar
         if (presupuesto < 1 || isNaN(presupuesto)) {
@@ -29,10 +42,14 @@ const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
         // Si se pasa la validacion
         setError(false);
         setCuenta(presupuesto);
-        setRestante(presupuesto);
+        if (gastos.length === 0) {
+            setRestante(presupuesto)
+        } else {
+
+        }
         setAgregarpregunta(false);
         localStorage.setItem('presupuestoInicial', JSON.stringify(presupuesto));
-        localStorage.setItem('restanteInicial', JSON.stringify(presupuesto));
+        localStorage.setItem('restanteInicial', JSON.stringify(restante));
     }
 
     return (
@@ -46,6 +63,7 @@ const Pregunta = ({ setCuenta, setRestante, setAgregarpregunta }) => {
                     type="number"
                     className="u-full-width"
                     placeholder="Coloca tu presupuesto"
+                    value={presupuesto}
                     onChange={handleChange}
                 />
                 <input

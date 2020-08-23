@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Error from './Error';
 import shortid from 'shortid';
 
-const Formulario = ({ setGasto, setCreargasto }) => {
+const Formulario = ({ setGasto, setCreargasto, setAgregarpregunta }) => {
 
     //Creo los states
     const [nombre, setNombre] = useState('');
@@ -39,6 +39,12 @@ const Formulario = ({ setGasto, setCreargasto }) => {
 
     }
 
+    // Cuando usuario haga click en boton, vaya a componente pregunta
+    const agregarpregunta = e => {
+        e.preventDefault();
+        setAgregarpregunta(true);
+    }
+
     return (
         <Fragment>
             <h2>Agrega tus gastos aquí</h2>
@@ -70,6 +76,10 @@ const Formulario = ({ setGasto, setCreargasto }) => {
                     className="button-primary u-full-width"
                 />
             </form>
+            <button
+                className="button-primary u-full-width"
+                onClick={agregarpregunta}
+            >Ir a Presupuesto</button>
         </Fragment>
     );
 }

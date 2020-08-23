@@ -54,8 +54,6 @@ function App() {
       //Resetear el creargasto
       setCreargasto(false);
     }
-
-
   }, [gasto, creargasto, gastos, restante])
 
   return (
@@ -64,9 +62,12 @@ function App() {
         <header>
           <h1>Gasto Mensual</h1>
           <div className="contenido contenido-principal">
-            {agregarpregunta && cuenta === 0 ?
+            {agregarpregunta ?
               <Pregunta
+                gastos={gastos}
+                cuenta={cuenta}
                 setCuenta={setCuenta}
+                restante={restante}
                 setRestante={setRestante}
                 setAgregarpregunta={setAgregarpregunta}
               />
@@ -76,6 +77,7 @@ function App() {
                   <Formulario
                     setGasto={setGasto}
                     setCreargasto={setCreargasto}
+                    setAgregarpregunta={setAgregarpregunta}
                   />
                 </div>
                 <div className="one-half column">
