@@ -6,13 +6,27 @@ import ControlPresupuesto from './components/ControlPresupuesto';
 
 function App() {
 
+  // Gastos en Local Storage
+  let gastosIniciales = JSON.parse(localStorage.getItem('citas'));
+  if (!gastosIniciales) {
+    gastosIniciales = [];
+  }
+
   //Definir State 
   const [cuenta, setCuenta] = useState(0);
   const [restante, setRestante] = useState(0);
   const [agregarpregunta, setAgregarpregunta] = useState(true);
-  const [gastos, setGastos] = useState([]);
+  const [gastos, setGastos] = useState(gastosIniciales);
   const [gasto, setGasto] = useState({});
   const [creargasto, setCreargasto] = useState(false);
+
+  useEffect(() => {
+    if (gastosIniciales) {
+      localStorage.setItem('citas', JSON.stringify(gastos));
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
+  }, [gastosIniciales, gastos])
 
   // UseEffect que actualiza el restante(cada vez que ingresamos un gasto)
   useEffect(() => {
@@ -35,7 +49,7 @@ function App() {
     <Fragment>
       <div className="container">
         <header>
-          <h1>Gasto Semanal</h1>
+          <h1>Gasto Mensual</h1>
           <div className="contenido contenido-principal">
             {agregarpregunta ?
               <Pregunta
